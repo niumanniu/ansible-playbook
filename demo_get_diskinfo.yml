@@ -1,0 +1,6 @@
+- hosts: all
+  tasks:
+  - name: check diskspace
+    shell: "df -hP /database|awk 'NR>1'"
+    register: check_out
+  - debug: msg="disk space {{check_out.stdout}}"	
